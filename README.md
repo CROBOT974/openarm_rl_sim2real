@@ -183,7 +183,7 @@ In [rl_policy_node.py](openarm_sim2real/scripts/rl_policy_node.py):
 
 ```bibtex
 @software{Openarm-Sim2Real,
-  author = {Chi, Cheng and LiKang, Song and Jiaxi Zheng},
+  author = {Chi, Cheng and LiKang, Song and Jiaxi Zheng and Dixia Fan},
   title = {OpenArm Sim2Real: RL Training and Deployment for OpenArm},
   url = {https://github.com/CROBOT974/openarm_sim2real},
   version = {1.0.0},
