@@ -129,10 +129,6 @@ source install/setup.bash
 # Terminal 1: bring up hardware
 ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
   model_path:=/path/to/policy.pt
-
-  # Terminal 2: RL policy inference
-ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
-  model_path:=/path/to/policy.pt
 ```
 
 ### 🦾 Real robot
@@ -141,7 +137,11 @@ ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
 # Terminal 1: bring up hardware
 ros2 launch openarm_bringup openarm.bimanual.launch.py \
   use_fake_hardware:=false arm_type:=v10
+```
 
+### 🧠 RL model
+
+```bash
 # Terminal 2: RL policy inference
 ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
   model_path:=/path/to/policy.pt
