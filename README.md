@@ -1,99 +1,121 @@
-# OpenArm Sim2Real Toolkit
+# 🤖 OpenArm Sim2Real Toolkit
 
-RL policy training and deployment for [OpenArm](https://github.com/openarm/openarm_ros2) V10 right arm, powered by [Isaac Lab](https://isaac-sim.github.io/IsaacLab/)
+<p align="center">
+  <img src="https://img.shields.io/badge/ROS_2-Humble-22314E?style=flat&logo=ros" alt="ROS2">
+  <img src="https://img.shields.io/badge/Sim-Isaac%20Lab-4B9CD3?style=flat&logo=nvidia" alt="Isaac Lab">
+  <img src="https://img.shields.io/badge/RL-RSL--RL-00A651?style=flat&logo=pytorch" alt="RSL-RL">
+  <img src="https://img.shields.io/badge/License-Apache%202.0-blue?style=flat" alt="License">
+</p>
 
+<p align="center">
+  <b>RL policy training and deployment for OpenArm V10 right arm</b><br>
+  Sim-to-real via <a href="https://isaac-sim.github.io/IsaacLab/">Isaac Lab</a> &nbsp;|&nbsp;
+  ROS 2 + ForwardCommandController &nbsp;|&nbsp;
+  <a href="https://github.com/openarm/openarm_ros2">OpenArm</a>
+</p>
 
 ---
 
 https://github.com/user-attachments/assets/59a45b66-afeb-4696-916c-e93c05e092f5
 
-## Installation
+---
 
-### Isaac Lab (training only)
+## 📦 Installation
 
-Follow the [Isaac Lab installation guide](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html).
+### 🧪 Isaac Lab (training only)
 
-### OpenArm Sim2Real
-Clone this repo **outside** the IsaacLab directory.
+Refer to the [Isaac Lab installation guide](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html).
+
+<details open>
+<summary><b>OpenArm Sim2Real extension</b></summary>
+
+> **Clone this repo outside the IsaacLab directory.**
+
 ```bash
 git clone https://github.com/CROBOT974/openarm_sim2real.git
 cd openarm_sim2real
 pip install -e source/openarm
 ```
 
-### ROS 2 deployment prerequisites
+</details>
 
-Requires ROS 2 Humble + PyTorch + Openarm ROS2 package.
+### 🤖 ROS 2 deployment prerequisites
 
-The openarm ROS2 prerequisites installation guide is available [here](https://docs.openarm.dev/1.0/software/ros2/control).
+| Requirement | Details |
+|-------------|---------|
+| ROS 2 | Humble |
+| Python | `torch`, `numpy` |
+| Robot SDK | [openarm_ros2](https://docs.openarm.dev/1.0/software/ros2/control) |
 
-**IMPORTANT: Gravity compensation**
-
-Real robot deployment **must** enable gravity compensation in `openarm_hardware`,
-otherwise the RL policy cannot track joint1/joint4 accurately.
-This blog provides an approriate workflow for [gravity compensation](https://blog.csdn.net/qq_53520547/article/details/160255892).
+> **IMPORTANT — Gravity compensation:** Real robot deployment **must** enable gravity compensation in `openarm_hardware`, otherwise the RL policy cannot accurately track joints 1 & 4. See [this guide](https://blog.csdn.net/qq_53520547/article/details/160255892).
 
 ---
 
-## Training (Isaac Lab)
+## 🚀 Training (Isaac Lab)
+
+<p align="center">
+  <img src="https://img.shields.io/badge/framework-Isaac%20Lab-4B9CD3?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/algorithm-PPO-00A651?style=flat-square" alt="">
+  <img src="https://img.shields.io/badge/envs-4096-darkgray?style=flat-square" alt="">
+</p>
 
 Requires Isaac Lab conda environment with `isaaclab_tasks`, `isaaclab_rl`, `rsl-rl-lib`.
 
-### Install extension
+<details>
+<summary><b>▶ Click to expand — commands</b></summary>
 
 ```bash
 cd openarm_sim2real
 pip install -e source/openarm
-```
 
-### Train
-
-```bash
+# Train (headless)
 python scripts/rsl_rl/train.py --task OpenArm-Right-OpenArmRightReachEnvCfg-v0 \
     --num_envs 4096 --max_iterations 1000 --headless
 
-# With video
+# Train (with video)
 python scripts/rsl_rl/train.py --task OpenArm-Right-OpenArmRightReachEnvCfg-v0 \
     --num_envs 4096 --max_iterations 1000 --video
 
-# Resume from checkpoint
+# Resume
 python scripts/rsl_rl/train.py --task OpenArm-Right-OpenArmRightReachEnvCfg-v0 \
     --num_envs 4096 --resume --load_run <run_folder_name>
 ```
 
-Logs are saved to `logs/rsl_rl/openarm_ri_reach/<timestamp>/`.
+</details>
 
-### Playback and export
+Logs → `logs/rsl_rl/openarm_ri_reach/<timestamp>/`
+
+### ▶️ Playback & export
 
 ```bash
 python scripts/rsl_rl/play.py --task OpenArm-Right-OpenArmRightReachEnvCfg-Play-v0 \
     --num_envs 1
 
-# With specific checkpoint
+# Specific checkpoint
 python scripts/rsl_rl/play.py --task OpenArm-Right-OpenArmRightReachEnvCfg-Play-v0 \
     --num_envs 1 --load_run <run_folder_name>
 ```
 
-The exported `policy.pt` goes to `logs/rsl_rl/openarm_ri_reach/<run>/exported/`.
+The exported `policy.pt` is saved to `logs/rsl_rl/openarm_ri_reach/<run>/exported/`.
 
-### CLI arguments
+### ⚙️ CLI arguments
 
 | Argument | Default | Description |
 |----------|---------|-------------|
 | `--task` | `OpenArm-Right-OpenArmRightReachEnvCfg-v0` | Training task |
-| `--num_envs` | 4096 | Parallel environments |
-| `--max_iterations` | 550 | Training iterations |
-| `--seed` | random | Random seed (-1 = random) |
-| `--headless` | false | Disable GUI |
-| `--video` | false | Record training video |
-| `--resume` | false | Resume from checkpoint |
-| `--load_run` | - | Run folder to resume from |
+| `--num_envs` | `4096` | Parallel environments |
+| `--max_iterations` | `550` | Training iterations |
+| `--seed` | random | `-1` for random |
+| `--headless` | `false` | Disable GUI |
+| `--video` | `false` | Record training video |
+| `--resume` | `false` | Resume from checkpoint |
+| `--load_run` | — | Run folder to resume from |
 
 ---
 
-## Deployment (ROS 2)
+## 🤖 Deployment (ROS 2)
 
-### Build
+### 🔨 Build
 
 The nested `openarm_sim2real/openarm_sim2real/` is the actual ROS 2 package.
 Copy it to your `ros2_ws/src/`, then build:
@@ -105,17 +127,16 @@ colcon build --packages-select openarm_sim2real
 source install/setup.bash
 ```
 
-> **Note**: The repo root `openarm_sim2real/` contains training code and logs.
-> Only the inner `openarm_sim2real/openarm_sim2real/` directory is a ROS 2 package.
+> **Note:** The repo root contains training code + logs. Only the inner `openarm_sim2real/` directory is a ROS 2 package.
 
-### Fake hardware test
+### 🧪 Fake hardware test
 
 ```bash
 ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
   model_path:=/path/to/policy.pt
 ```
 
-### Real robot
+### 🦾 Real robot
 
 ```bash
 # Terminal 1: bring up hardware
@@ -127,12 +148,11 @@ ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
   model_path:=/path/to/policy.pt
 ```
 
-### Multi-target cycling
+### 🔁 Multi-target cycling
 
-Modify `TARGET_CYCLE` in [rl_policy_node_cycle.py](openarm_sim2real/scripts/rl_policy_node_cycle.py),
-then launch the cycle node (also accepts `model_path` parameter).
+Edit `TARGET_CYCLE` in [rl_policy_node_cycle.py](openarm_sim2real/scripts/rl_policy_node_cycle.py), then launch the cycle node.
 
-### Manual control
+### 🎮 Manual control
 
 ```bash
 python3 send_forward_cmd.py 0.0 0.1 0.0 0.5 0.0 0.0 0.0
@@ -140,39 +160,34 @@ python3 send_forward_cmd.py 0.0 0.1 0.0 0.5 0.0 0.0 0.0
 
 ---
 
-## Parameters
+## 🎛️ Parameters
 
 In [rl_policy_node.py](openarm_sim2real/scripts/rl_policy_node.py):
 
 | Parameter | Default | Description |
-|-----------|---------|-------------|
-| `MAX_DELTA_PER_STEP` | 0.06 rad | Max joint delta per inference step |
-| `DECIMATION` | 2 | Inference every N frames (2 = 30 Hz) |
-| `EE_DIST_THRESHOLD` | 0.02 m | Stop when EE is within this distance of target |
-| `ACTION_SCALE` | 0.5 | Scales RL action to joint position delta |
-| `INFERENCE_RATE` | 60.0 Hz | Timer callback rate |
+|-----------|:------:|-------------|
+| `MAX_DELTA_PER_STEP` | `0.06` rad | Max joint delta per inference step |
+| `DECIMATION` | `2` | Inference every N frames (→ 30 Hz) |
+| `EE_DIST_THRESHOLD` | `0.02` m | Stop when EE within this distance |
+| `ACTION_SCALE` | `0.5` | RL action → joint position scale |
+| `INFERENCE_RATE` | `60.0` Hz | Timer callback rate |
 
 ---
 
-## Dependencies
-**Gravity Compensation:**
-- [gravity compensation](https://blog.csdn.net/qq_53520547/article/details/160255892)
+## 📚 Dependencies
 
-**Deployment:**
-- [openarm_ros2](https://github.com/enactic/openarm_ros2)
-- `rclpy`, `std_msgs`, `sensor_msgs`, `geometry_msgs`, `tf2_ros` (ROS 2 Humble)
-- `torch`, `numpy`
-
-**Training (additional):**
-- [Isaac Lab](https://isaac-sim.github.io/IsaacLab/)
-- `rsl-rl-lib` >= 3.0.1
+| Category | Packages |
+|----------|----------|
+| **Deployment** | `rclpy`, `std_msgs`, `sensor_msgs`, `geometry_msgs`, `tf2_ros` (ROS 2 Humble), `torch`, `numpy` |
+| **Gravity Compensation** | [Guide & patches](https://blog.csdn.net/qq_53520547/article/details/160255892) |
+| **Training** | [Isaac Lab](https://isaac-sim.github.io/IsaacLab/), `rsl-rl-lib` ≥ 3.0.1 |
+| **Robot SDK** | [openarm_ros2](https://github.com/enactic/openarm_ros2) |
 
 ---
 
-## Citation
+## 📖 Citation
 
 ```bibtex
-
 @software{Openarm-Sim2Real,
   author = {Chi, Cheng and LiKang, Song and Jiaxi Zheng},
   title = {OpenArm Sim2Real: RL Training and Deployment for OpenArm},
@@ -181,3 +196,7 @@ In [rl_policy_node.py](openarm_sim2real/scripts/rl_policy_node.py):
   year = {2026}
 }
 ```
+
+<p align="center">
+  <sub>Built with ❤️ on <a href="https://github.com/isaac-sim/IsaacLab">Isaac Lab</a> and <a href="https://github.com/enactic/openarm_ros2">OpenArm</a></sub>
+</p>
