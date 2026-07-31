@@ -56,7 +56,7 @@ pip install -e source/openarm
 Requires Isaac Lab conda environment with `isaaclab_tasks`, `isaaclab_rl`, `rsl-rl-lib`.
 
 <details>
-<summary><b>▶ Click to expand — commands</b></summary>
+<summary><b>Click to expand — commands</b></summary>
 
 ```bash
 cd openarm_sim2real
