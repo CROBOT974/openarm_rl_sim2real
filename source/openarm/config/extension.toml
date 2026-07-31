@@ -1,0 +1,26 @@
+[package]
+
+# Semantic Versioning is used: https://semver.org/
+version = "0.1.0"
+
+# Description
+category = "isaaclab"
+readme  = "README.md"
+
+title = "OpenArm Sim2Real"
+author = "OpenArm Contributors"
+maintainer = "OpenArm Contributors"
+description = "OpenArm Sim2Real: RL training and deployment extension"
+repository = "https://github.com/yourname/openarm_sim2real"
+keywords = ["extension", "isaaclab", "sim2real"]
+
+[dependencies]
+"isaaclab" = {}
+"isaaclab_assets" = {}
+"isaaclab_rl" = {}
+"isaaclab_tasks" = {}
+
+[[python.module]]
+name = "openarm"
+
+[isaaclab_settings]
