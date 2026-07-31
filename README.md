@@ -2,8 +2,10 @@
 
 RL policy training and deployment for [OpenArm](https://github.com/openarm/openarm_ros2) V10 right arm, powered by [Isaac Lab](https://isaac-sim.github.io/IsaacLab/)
 
-https://github.com/user-attachments/assets/59a45b66-afeb-4696-916c-e93c05e092f5
+
 ---
+
+https://github.com/user-attachments/assets/59a45b66-afeb-4696-916c-e93c05e092f5
 
 ## Installation
 
