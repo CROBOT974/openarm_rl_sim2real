@@ -126,6 +126,11 @@ source install/setup.bash
 ### 🧪 Fake hardware test
 
 ```bash
+# Terminal 1: bring up hardware
+ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
+  model_path:=/path/to/policy.pt
+
+  # Terminal 2: RL policy inference
 ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
   model_path:=/path/to/policy.pt
 ```
