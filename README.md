@@ -53,12 +53,6 @@ pip install -e source/openarm
 
 ## 🚀 Training (Isaac Lab)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/framework-Isaac%20Lab-4B9CD3?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/algorithm-PPO-00A651?style=flat-square" alt="">
-  <img src="https://img.shields.io/badge/envs-4096-darkgray?style=flat-square" alt="">
-</p>
-
 Requires Isaac Lab conda environment with `isaaclab_tasks`, `isaaclab_rl`, `rsl-rl-lib`.
 
 <details>
