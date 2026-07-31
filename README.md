@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://docs.ros.org/en/humble/"><img src="https://img.shields.io/badge/ROS_2-Humble-22314E?style=flat&logo=ros" alt="ROS2"></a>
-  <a href="https://isaac-sim.github.io/IsaacLab/"><img src="https://img.shields.io/badge/Sim-Isaac%20Lab-4B9CD3?style=flat&logo=nvidia" alt="Isaac Lab"></a>
+  <a href="https://isaac-sim.github.io/IsaacLab/main/index.html"><img src="https://img.shields.io/badge/Sim-Isaac%20Lab-4B9CD3?style=flat&logo=nvidia" alt="Isaac Lab"></a>
   <a href="https://github.com/leggedrobotics/rsl_rl"><img src="https://img.shields.io/badge/RL-RSL--RL-00A651?style=flat&logo=pytorch" alt="RSL-RL"></a>
   <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue?style=flat" alt="License"></a>
 </p>
