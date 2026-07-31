@@ -1,4 +1,4 @@
-# OpenArm Sim2Real
+# OpenArm Sim2Real Toolkit
 
 RL policy training and deployment for [OpenArm](https://github.com/openarm/openarm_ros2) V10 right arm, powered by [Isaac Lab](https://isaac-sim.github.io/IsaacLab/)
 
