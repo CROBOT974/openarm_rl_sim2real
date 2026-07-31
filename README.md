@@ -14,7 +14,7 @@ Follow the [Isaac Lab installation guide](https://isaac-sim.github.io/IsaacLab/m
 ### OpenArm Sim2Real
 Clone this repo **outside** the IsaacLab directory.
 ```bash
-git clone https://github.com/yourname/openarm_sim2real.git
+git clone https://github.com/CROBOT974/openarm_sim2real.git
 cd openarm_sim2real
 pip install -e source/openarm
 ```
@@ -174,7 +174,7 @@ In [rl_policy_node.py](openarm_sim2real/scripts/rl_policy_node.py):
 @software{Openarm-Sim2Real,
   author = {Chi, Cheng and LiKang, Song and Jiaxi Zheng},
   title = {OpenArm Sim2Real: RL Training and Deployment for OpenArm},
-  url = {https://github.com/yourname/openarm_sim2real},
+  url = {https://github.com/CROBOT974/openarm_sim2real},
   version = {1.0.0},
   year = {2026}
 }
