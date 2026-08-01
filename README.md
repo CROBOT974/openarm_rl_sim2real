@@ -199,5 +199,5 @@ In [rl_policy_node.py](openarm_sim2real/scripts/rl_policy_node.py):
 ```
 
 <p align="center">
-  <sub>Built with ❤️ on <a href="https://github.com/isaac-sim/IsaacLab">Isaac Lab</a> and <a href="https://github.com/enactic/openarm_ros2">OpenArm</a></sub>
+  <sub>Built with ❤️ on <a href="https://isaac-sim.github.io/IsaacLab/main/index.html#">Isaac Lab</a> and <a href="https://docs.openarm.dev/1.0/">OpenArm</a></sub>
 </p>
