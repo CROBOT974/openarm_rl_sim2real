@@ -156,7 +156,7 @@ Edit `TARGET_CYCLE` in [rl_policy_node_cycle.py](openarm_sim2real/scripts/rl_pol
 ### 🎮 Manual control
 
 ```bash
-python3 send_forward_cmd.py 0.0 0.1 0.0 0.5 0.0 0.0 0.0
+python3 send_forward_cmd.py 0.2 0.0 0.0 0.5 0.0 0.0 0.0
 ```
 
 ---
