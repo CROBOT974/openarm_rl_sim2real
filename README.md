@@ -48,6 +48,10 @@ pip install -e source/openarm
 | Robot SDK | [openarm_ros2](https://docs.openarm.dev/1.0/software/ros2/control) |
 
 > **IMPORTANT — Gravity compensation:** Real robot deployment **must** enable gravity compensation in `openarm_hardware`, otherwise the RL policy cannot accurately track joints 1 & 4. See [this guide](https://blog.csdn.net/qq_53520547/article/details/160255892).
+>
+> **IMPORTANT — Fake hardware PD control:** When running with `use_fake_hardware:=true`, the simulation requires `FakeOpenArmV10HW` (`fake_openarm_hw.cpp`) to emulate PD control in RViz, otherwise fake joint trajectory execution will not work properly.
+>
+> Reference implementations for both features can be found in the `ros2_ws` branch of this repository.
 
 ---
 
