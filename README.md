@@ -134,15 +134,15 @@ We prepared a pretrained model in pretrained_models for test.
 ```bash
 # Terminal 1: bring up hardware
 ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
-  model_path:=/path/to/policy.pt
+  use_fake_hardware:=true
 ```
 
 #### 🦾 Real robot
 
 ```bash
 # Terminal 1: bring up hardware
-ros2 launch openarm_bringup openarm.bimanual.launch.py \
-  use_fake_hardware:=false arm_type:=v10
+ros2 launch openarm_sim2real sim2real_forward_cmd.launch.py \
+  use_fake_hardware:=false
 ```
 
 #### 🧠 RL model
