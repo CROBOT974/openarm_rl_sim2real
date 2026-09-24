@@ -119,7 +119,7 @@ The nested `openarm_rl_sim2real/openarm_sim2real/` is the actual ROS 2 package.
 Copy it to your `ros2_ws/src/`, then build:
 
 ```bash
-cp -r openarm_sim2real/openarm_sim2real ~/openarm/ros2_ws/src/
+cp -r openarm_rl_sim2real/openarm_sim2real ~/openarm/ros2_ws/src/
 cd ~/openarm/ros2_ws
 colcon build --packages-select openarm_sim2real
 source install/setup.bash
