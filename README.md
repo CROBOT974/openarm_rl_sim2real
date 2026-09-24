@@ -1,4 +1,4 @@
-# 🤖 OpenArm Sim2Real Toolkit
+# 🤖 OpenArm RL Policy Sim2Real Toolkit
 
 <p align="center">
   <a href="https://docs.ros.org/en/humble/"><img src="https://img.shields.io/badge/ROS_2-Humble-22314E?style=flat&logo=ros" alt="ROS2"></a>
