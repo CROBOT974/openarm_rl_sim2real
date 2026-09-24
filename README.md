@@ -115,7 +115,7 @@ The exported `policy.pt` is saved to `logs/rsl_rl/openarm_ri_reach/<run>/exporte
 
 ### 🔨 Build
 
-The nested `openarm_sim2real/openarm_sim2real/` is the actual ROS 2 package.
+The nested `openarm_rl_sim2real/openarm_sim2real/` is the actual ROS 2 package.
 Copy it to your `ros2_ws/src/`, then build:
 
 ```bash
